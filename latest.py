@@ -21,14 +21,15 @@ rows = table_body.find_all('tr')
 headings = rows[0].find_all('th')
 # Strip Region heading
 headings = headings[1:]
-# Strip whitespace
-headings = [element.text.strip() for element in headings]
+# Strip newlines and whitespace
+headings = [element.text.replace('\n', '').strip() for element in headings]
 
 data = {}
 # rows[0] was headings
 for row in rows[1:]:
     columns = row.find_all('td')
-    columns = [element.text.strip() for element in columns]
+    # Replace newline with space and strip extra whitespace
+    columns = [element.text.replace('\n', ' ').strip() for element in columns]
 
     region_data = {}
     # columns[0] is region name
