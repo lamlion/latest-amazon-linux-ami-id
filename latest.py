@@ -34,7 +34,7 @@ for row in rows[1:]:
     region_data = {}
     # columns[0] is region name
     for i in range(len(columns[1:])):
-        region_data[headings[i]] = columns[i+1]
+        region_data[headings[i]] = columns[i + 1]
     data[columns[0]] = region_data
 
 print(json.dumps(data, indent=4))
